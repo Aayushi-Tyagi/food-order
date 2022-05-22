@@ -4,7 +4,6 @@
          <div class="main-content">
             <div class="wrapper">
               <h1> MANAGE ADMIN </h1>
-
               <br /><br />
 
 

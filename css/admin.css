@@ -92,14 +92,15 @@ table tr td{
 .menu ul li{
     display: inline;
     padding: 1%;
+    background-color: #270082;
 }
 .menu ul li a{
     text-decoration: none;
     font-weight: bold;
-    color: #ff6b81;
+    color: #f1f2f6;
 }
 .menu ul li a:hover{
-    color: #ff4757;
+    color: #f1f2f6;
 } 
 
 /* css for main content*/
@@ -118,7 +119,7 @@ table tr td{
 
 /* css for footer */
 .footer{
-    background-color: #130868;
+    background-color: #270082;
     color: white;
 }
 
