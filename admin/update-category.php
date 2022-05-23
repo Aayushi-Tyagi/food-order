@@ -38,7 +38,7 @@
                     $_SESSION['no-category-found'] = "<div class='error'>Category not Found.</div>";
                     header('location:'.SITEURL.'admin/manage-category.php');                 
                 }
-             }
+            }
                 else
                  {
                  //redirect to manage category
@@ -128,7 +128,7 @@
                 //check whether the image is selected or not
                 if(isset($_FILES['image']['name']))
                   {
-                    //get the image details
+                    //Get the image details
                     $image_name = $_FILES['image']['name'];
 
                     //check whether the image is available or not
@@ -157,7 +157,7 @@
                    if($upload==false)
                     {
                       //Set message
-                      $_SESSION['upload'] = "<div class='error'>Failed to upload Image.</div>";
+                      $_SESSION['upload'] = "<div class='error'>Failed to upload Image. </div>";
                       //Redirect to add category page
                       header('location:'.SITEURL.'admin/manage-category.php');
                       //Stop the process
@@ -184,44 +184,44 @@
                         }
                         else
                         {
-                        $image_name = $current_image;
+                            $image_name = $current_image;
                         }
-                }
-                else
-                {
-                    $image_name = $current_image;
-                }
+                    }
+                    else
+                    {
+                        $image_name = $current_image;
+                    }
 
-                //3. Update the database
-                $sql2 = "UPDATE tbl_category SET
-                   title = '$title',
-                   image_name = '$image_name',
-                   featured = '$featured',
-                   active = '$active'
-                   WHERE id=$id                
-                ";
+                     //3. Update the database
+                     $sql2 = "UPDATE tbl_category SET
+                     title = '$title',
+                     image_name = '$image_name',
+                     featured = '$featured',
+                     active = '$active'
+                     WHERE id=$id                
+                     ";
  
-                 // execute the query 
-                 $res2 = mysqli_query($conn, $sql2);
+                     // Execute the query 
+                     $res2 = mysqli_query($conn, $sql2);
 
-                //4.redirect to manage category with message
-                //check whether executed or not
-                if($res2==true)
-                {
-                    //category updated 
-                    $_SESSION['update'] = "<div class='success'>Category Updated Successfully.</div>";
-                    header('location:'.SITEURL.'admin/manage-category.php');
-                }
-                else
-                {
+                     //4.Redirect to manage category with message
+                     //check whether executed or not
+                     if($res2==true)
+                     {
+                     //category updated 
+                     $_SESSION['update'] = "<div class='success'>Category Updated Successfully.</div>";
+                     header('location:'.SITEURL.'admin/manage-category.php');
+                    }
+                    else
+                    {
                     //failed to update category
                     $_SESSION['update'] = "<div class='error'>Failed to Update Category.</div>";
                     header('location:'.SITEURL.'admin/manage-category.php');
-                }
+                    }
 
-            }
-          }
-       ?>
+                 }
+              }
+           ?>
 
     </div>
 </div>
