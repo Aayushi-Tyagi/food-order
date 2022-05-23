@@ -120,7 +120,7 @@
                 $ext = end(explode('.', $image_name));
 
                 //Rename the image
-                $image_name = "Food Category_".rand(000,999).'.'.$ext; ///e.g food_category_834.jpg
+                $image_name = "Food_Category_".rand(000,999).'.'.$ext; ///e.g food_category_834.jpg
                 
 
 

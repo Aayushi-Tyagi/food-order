@@ -36,14 +36,15 @@
                  {
                     //redirect to manage category with session message
                     $_SESSION['no-category-found'] = "<div class='error'>Category not Found.</div>";
-                    header('location:'.SITEURL.'admin/manage-category.php');                 }
+                    header('location:'.SITEURL.'admin/manage-category.php');                 
+                }
              }
-             else
-             {
+                else
+                 {
                  //redirect to manage category
                  header('location:'.SITEURL.'admin/manage-category.php');
-             }
-        ?>
+                 }
+          ?>
         
         <form action="" method="POST" enctype="multipart/form-data">
 
@@ -124,10 +125,77 @@
                 $active = $_POST['active'];
 
                 //2.Updating New Image if selected 
+                //check whether the image is selected or not
+                if(isset($_FILES['image']['name']))
+                  {
+                    //get the image details
+                    $image_name = $_FILES['image']['name'];
+
+                    //check whether the image is available or not
+                    if($image_name != "")
+                    {
+                     //Image Available
+                     //A.Upload the new image
+
+                     //Auto rename our image
+                     //Get the extension of our image (jpg,png,gif, etc)e.g. "specialfood1.jpg"
+                     $ext = end(explode('.', $image_name));
+
+                    //Rename the image
+                    $image_name = "Food_Category_".rand(000,999).'.'.$ext; ///e.g food_category_834.jpg
+                
+                    $source_path = $_FILES['image']['tmp_name'];
+
+                    $destination_path = "../images/category/".$image_name;  
+                
+                     ///finally upload the image
+                    $upload = move_uploaded_file($source_path, $destination_path);
+                
+                
+                   //check whether the image is uploaded or not
+                   //and if the image is not uploaded then we will stop the process redirect with error message
+                   if($upload==false)
+                    {
+                      //Set message
+                      $_SESSION['upload'] = "<div class='error'>Failed to upload Image.</div>";
+                      //Redirect to add category page
+                      header('location:'.SITEURL.'admin/manage-category.php');
+                      //Stop the process
+                      die();
+                     }
+                   
+                       //B.Remove the current image if available
+                       if($current_image!="")
+                       {
+
+                           $remove_path = "../images/category/".$current_image;
+
+                           $remove = unlink($remove_path);
+
+                           //check whether the image is removed or not
+                           //if failed to remove then display message and stop the process
+                           if($remove==false)
+                            {
+                               //failed to remove image
+                               $_SESSION['failed-remove'] = "<div class='error>Failed to remove current Image.</div>";
+                               header('location:'.SITEURL.'admin/manage-category.php');
+                               die();//stop the process
+                            }
+                        }
+                        else
+                        {
+                        $image_name = $current_image;
+                        }
+                }
+                else
+                {
+                    $image_name = $current_image;
+                }
 
                 //3. Update the database
                 $sql2 = "UPDATE tbl_category SET
                    title = '$title',
+                   image_name = '$image_name',
                    featured = '$featured',
                    active = '$active'
                    WHERE id=$id                
@@ -152,6 +220,7 @@
                 }
 
             }
+          }
        ?>
 
     </div>
