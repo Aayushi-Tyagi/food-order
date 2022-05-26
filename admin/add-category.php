@@ -173,7 +173,7 @@
             {
                 //failed to add category
                 //query executed and category added
-                $_SESSION['add'] = "<div class='error'>Category Added Successfully.</div>";
+                $_SESSION['add'] = "<div class='error'>Failed to Added Category.</div>";
                 //Redirect to Manage Category Page
                 header('location:'.SITEURL.'admin/add-category.php');
             }

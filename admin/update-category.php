@@ -198,7 +198,7 @@
                 active = '$active'
                 WHERE id=$id                
                 ";
-
+ 
                 // Execute the query 
                 $res2 = mysqli_query($conn, $sql2);
 
