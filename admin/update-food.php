@@ -17,7 +17,7 @@
 
         // get THE INdividual value of selected food
         $title = $row2['title'];
-        $descriptpion = $row2['description'];
+        $description = $row2['description'];
         $price = $row2['price'];
         $current_image = $row2['image_name'];
         $current_category = $row2['category_id'];
@@ -50,7 +50,7 @@
          <tr>
              <td>Description: </td>
              <td>
-                 <textarea name="description" cols="30" rows="5"><?php echo $descriptpion; ?></textarea>
+                 <textarea name="description" cols="30" rows="5"><?php echo $description; ?></textarea>
              </td>
          </tr>
 
@@ -242,7 +242,7 @@
                 //4.Update the food in database
                 $sql3 = "UPDATE tbl_food SET
                    title = '$title',
-                   description = 'description',
+                   description = '$description',
                    price = $price,
                    image_name = '$image_name',
                    category_id = '$category',

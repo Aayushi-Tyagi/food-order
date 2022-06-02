@@ -4,12 +4,14 @@
 <section class="food-search text-center">
     <div class="container">
 
-    <h2><a href="#" class="text-black">"Food on your search here"</a></h2>
+        <form action="<?php echo SITEURL; ?>food-search.php" method="POST">
+            <input type="search" name="search" placeholder="Search for Food.." required>
+            <input type="submit" name="submit" value="Search" class="btn btn-primary">
+        </form>
 
     </div>
 </section>
 <!--- food search section end here -->
-
 
 <!--- Food Menu Section Starts Here --->
 <section class="food-menu">
@@ -61,7 +63,7 @@
                             
                                 <div class="food-menu-desc">
                                     <h4><?php echo $title; ?></h4>
-                                    <p class="food-price">$<?php echo $price; ?> </p>
+                                    <p class="food-price">Rs.<?php echo $price; ?> </p>
                                     <p class="food-detail">
                                     <?php echo $description; ?>
                                     </p>

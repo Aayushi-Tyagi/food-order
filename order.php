@@ -11,7 +11,7 @@
           <legend>Selected Food</legend>
 
           <div class="food-menu-img">
-          <img src="images/menu.pasta.jpg" alt="Cheese Pasta" class="img-responsive img-curve">
+          <img src="images/pasta.jpg" alt="Cheese Pasta" class="img-responsive img-curve">
           </div>
 
           <div class="food-menu-desc">
