@@ -28,7 +28,6 @@
                     <li><a href="manage-catering.php">CATERING</a></li>
                     <li><a href="manage-order.php">ORDER</a></li>
                     <li><a href="manage-billing.php">BILLING</a></li>
-                    <li><a href="manage-contact.php">CONTACT Us</a></li>
                     <li><a href="logout.php">LOG OUT</a></li>
                 </ul>   
             </div>
