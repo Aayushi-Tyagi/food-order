@@ -13,6 +13,13 @@
 </section>
 <!--- food search section end here -->
 
+<?php 
+   if(isset($_SESSION['order']))
+   {
+       echo $_SESSION['order'];
+       unset($_SESSION['order']);
+   }
+?>
 
 <!-- Categories section starts here -->
 <section class="categories">
@@ -44,7 +51,7 @@
                             //check whether image is available or not
                             if($image_name=="")
                             {
-                                //  Image not Available
+                                //  Display the Messsge
                                 echo "<div class='error'>Image Not Available.</div>";
                             }
                             else{
@@ -128,7 +135,7 @@
                             <?php echo $description; ?></p>
                     <br>
 
-                    <a href="order.php" class="btn btn-primary">Order Now</a>
+                    <a href="<?php echo SITEURL; ?>order.php?food_id=<?php echo $id; ?>" class="btn btn-primary">Order Now</a>
                    </div>
                 </div>
                 <?php

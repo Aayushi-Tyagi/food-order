@@ -19,7 +19,7 @@
             <div class="container">
                 <div class="logo">
                     <a href="#" title="logo">
-                        <img src="image/logo.png" alt="Restaurant Logo" class="img-responsive">
+                        <img src="images/Foodie.png" alt="Restaurant Logo" class="img-responsive">
                     </a> 
                 </div>
                 
@@ -36,6 +36,9 @@
                         </li>
                         <li>
                             <a href="#">Contact</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo SITEURL; ?>admin/login.php">Admin</a>
                         </li>
                     </ul>
                 </div>

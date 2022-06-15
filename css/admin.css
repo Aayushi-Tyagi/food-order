@@ -29,14 +29,28 @@
 }
 
 table tr th{
-    border-bottom: 1px solid black;
-    padding: 1%;
-    text-align: left;
+    border-bottom: 1px solid rgb(42, 4, 100);
+    padding: 3px 5px;
+    text-align: justify;
 }
 
+
 table tr td{
-    padding: 1%;
+    padding: 3px 5px;
+    text-align: justify;
 }
+
+
+a{
+    color: #2093e0;
+    text-decoration: none;
+}
+
+a:hover{
+    color: #ff4757;
+    border-color: #ff4757;
+}
+
 
 .btn-primary{
     background-color: #1e90ff;

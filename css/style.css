@@ -44,10 +44,12 @@ a{
     color: #0e0d0d;
     text-decoration: none;
 }
+
 a:hover{
     color: #ff4757;
     border-color: #ff4757;
 }
+
 
 .btn{
     padding: 1%;
@@ -94,6 +96,16 @@ fieldset{
     margin: 5%;
     padding: 3%;
     border-radius: 5px;
+}
+
+.error{
+    padding: 2%;
+    color: blue;
+}
+
+.success{
+    padding: 2%;
+    color: green;
 }
 
 
@@ -196,6 +208,7 @@ fieldset{
 .order{
     width: 50%;
     margin: 0 auto;
+    
 }
 .input-responsive{
     width: 96%;

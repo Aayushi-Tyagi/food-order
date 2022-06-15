@@ -18,8 +18,8 @@
                   <td>Aayushi Tyagi</td>
                   <td>aayushityagi</td>
                   <td>
-                   <a href="#" class="btn-secondary"> Update Admin</a> 
-                   <a href="#" class="btn-danger"> Delete Admin </a>
+                   <a href="#" class="btn-secondary"> Update Catering</a> 
+                   <a href="#" class="btn-danger"> Delete Catering</a>
                   </td>
                 </tr>
 
@@ -28,8 +28,8 @@
                   <td>Aayushi Tyagi</td>
                   <td>aayushityagi</td>
                   <td>
-                  <a href="#" class="btn-secondary"> Update Admin</a> 
-                   <a href="#" class="btn-danger"> Delete Admin </a>
+                  <a href="#" class="btn-secondary"> Update Catering</a> 
+                   <a href="#" class="btn-danger"> Delete Catering </a>
                   </td>
                 </tr>
 
@@ -38,8 +38,8 @@
                   <td>Aayushi Tyagi</td>
                   <td>aayushityagi</td>
                   <td>
-                  <a href="#" class="btn-secondary"> Update Admin</a> 
-                   <a href="#" class="btn-danger"> Delete Admin </a>
+                  <a href="#" class="btn-secondary"> Update Catering</a> 
+                   <a href="#" class="btn-danger"> Delete Catering </a>
                   </td>
                 </tr>
 
