@@ -30,13 +30,13 @@
 
 table tr th{
     border-bottom: 1px solid rgb(42, 4, 100);
-    padding: 3px 5px;
+    padding: 5px 10px;
     text-align: justify;
 }
 
 
 table tr td{
-    padding: 3px 5px;
+    padding: 10px;
     text-align: justify;
 }
 
