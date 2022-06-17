@@ -1,10 +1,5 @@
 <?php include('partials/menu.php'); ?>
 
-<div class="main-content">
-    <div class="wrapper">
-        <h1> Update Catering </h1>
-
-        <br><br>
 
         <?php
              //check whether the id is set or not
@@ -14,29 +9,25 @@
                  //echo "Getting the Data";
                  $id = $_GET['id'];
                  //create sql query to get all other details
-                 $sql = "SELECT * FROM tbl_catering WHERE id=$id";
+                 $sql2 = "SELECT * FROM tbl_catering WHERE id=$id";
 
                  //execute the query
-                 $res = mysqli_query($conn, $sql);
+                 $res2 = mysqli_query($conn, $sql2);
 
-                 //count the rows to check whether the id is valid or not
-                 $count = mysqli_num_rows($res);
+                  /// Get the value based on query executed 
+                $row2 = mysqli_fetch_assoc($res2);
 
-                 if($count==1)
                  {
                      //get all the data
-                     $row = mysqli_fetch_assoc($res);
-                     $title = $row['title'];
-                     $current_image = $row['image_name'];
-                     $featured = $row['featured'];
-                     $active = $row['active'];
+                     $title = $row2['title'];
+                     $price = $row2['price'];
+                     $description = $row2['description'];
+                     $current_image = $row2['image_name'];
+                     $current_catering = $row2['catering_id'];
+                     $featured = $row2['featured'];
+                     $active = $row2['active'];
                  }
-                 else
-                 {
-                    //redirect to manage catering with session message
-                    $_SESSION['no-catering-found'] = "<div class='error'>Catering not Found.</div>";
-                    header('location:'.SITEURL.'admin/manage-catering.php');                 
-                }
+                
             }
                 else
                  {
@@ -45,72 +36,133 @@
                  }
           ?>
 
-<form action="" method="POST" enctype="multipart/form-data">
+<div class="main-content">
+    <div class="wrapper">
+        <h1> Update Catering </h1>
 
-<table class="tbl-30">
-   <tr>
-     <td>Title: </td>
-     <td>
-         <input type="text" name="title" value="<?php echo $title; ?>">
-     </td>
-   </tr>
+        <br><br>
 
- <tr>
-   <td>Current Image: </td>
-   <td>
-      <?php
-         if($current_image != "")
-         {
-             //display the image
-             ?>
-             <img src="<?php echo SITEURL; ?>images/catering/<?php echo $current_image; ?>" width="150">
-             <?php
-         }
-         else
-         {
-             //display message
-             echo "<div class='error'>Image Not Added.</div>";
-         }
-      ?>
-    </td>
- </tr>
 
- <tr>
-     <td>New Image: </td>
-     <td> 
-         <input type="file" name="image">
-     </td>
- </tr>
+            <form action="" method="POST" enctype="multipart/form-data">
 
- <tr>
-     <td>Featured: </td>
-     <td>
-         <input <?php if($featured=="Yes"){echo "checked";} ?> type="radio" name="featured" value="Yes"> Yes
+            <table class="tbl-30">
+            <tr>
+                <td>Title: </td>
+                <td>
+                    <input type="text" name="title" value="<?php echo $title; ?>">
+                </td>
+            </tr>
 
-         <input <?php if($featured=="No"){echo "checked";} ?> type="radio" name="featured" value="No"> No
-     </td>
- </tr>
+            <td>Description: </td>
+                <td>
+                    <textarea name="description" cols="30" rows="5"><?php echo $description; ?></textarea>
+                </td>
+            </tr>
 
- <tr>
-     <td>Active: </td>
-     <td>
-         <input <?php if($active=="Yes"){echo "checked";} ?> type="radio" name="active" value="Yes"> Yes
+            <tr>
+                <td>Price: </td>
+                <td>
+                    <input type="number" name="price" value="<?php echo $price; ?>">
+                </td>
+            </tr>
 
-         <input <?php if($active=="No"){echo "checked";} ?> type="radio" name="active" value="No"> No
-     </td>
- </tr>
+            <tr>
+            
 
- <tr>
-     <td>
-        <input type="hidden" name="current_image" value="<?php echo $current_image; ?>">
-        <input type="hidden" name="id" value="<?php echo $id; ?>"> 
-        <input type="submit" name="submit" value="Update Catering" class="btn-secondary">
-     </td>
- </tr>
+            <tr>
+            <td>Current Image: </td>
+            <td>
+                <?php
+                    if($current_image != "")
+                    {
+                        //display the image
+                        ?>
+                        <img src="<?php echo SITEURL; ?>images/catering/<?php echo $current_image; ?>" width="150">
+                        <?php
+                    }
+                    else
+                    {
+                        //display message
+                        echo "<div class='error'>Image Not Added.</div>";
+                    }
+                ?>
+                </td>
+            </tr>
 
-</table>
+            <tr>
+                <td>Select New Image: </td>
+                <td> 
+                    <input type="file" name="image">
+                </td>
+            </tr>
 
-</form>
+            <tr>
+                <td>Catering: </td>
+                <td>
+                    <select name="catering">
+                        <?php
+                            //query to get active catering
+                            $sql = "SELECT * FROM tbl_catering WHERE active='Yes'";
+                            //Execute the query
+                            $res = mysqli_query($conn, $sql);
+                            //Count Rows
+                            $count = mysqli_num_rows($res);
+
+                        //check whether catering available or not
+                        if($count>0)
+                        {
+                            //Catering available
+                            while($row=mysqli_fetch_assoc($res))
+                            {
+                                $catering_title = $row['title'];
+                                $catering_id = $row['id'];
+                                    
+                                //echo "<option value='$cateringy_id'>$catering_title</option>";
+                                ?>
+                                <option <?php if($current_catering==$catering_id){echo "selected";} ?> value="<?php echo $catering_id; ?>"><?php echo $catering_title; ?></option>
+                                <?php
+                            }
+                        }
+                        else{
+                            // catering not available
+                            echo "<option value='0'>Catering Not Available.</option>";
+                        }
+
+                        ?>
+                    
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Featured: </td>
+                <td>
+                    <input <?php if($featured=="Yes"){echo "checked";} ?> type="radio" name="featured" value="Yes"> Yes
+
+                    <input <?php if($featured=="No"){echo "checked";} ?> type="radio" name="featured" value="No"> No
+                </td>
+            </tr>
+
+            <tr>
+                <td>Active: </td>
+                <td>
+                    <input <?php if($active=="Yes"){echo "checked";} ?> type="radio" name="active" value="Yes"> Yes
+
+                    <input <?php if($active=="No"){echo "checked";} ?> type="radio" name="active" value="No"> No
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="hidden" name="current_image" value="<?php echo $current_image; ?>">
+                    <input type="hidden" name="id" value="<?php echo $id; ?>"> 
+                    <input type="submit" name="submit" value="Update Catering" class="btn-secondary">
+                </td>
+            </tr>
+
+            </table>
+
+            </form>
 
 <?php
     if(isset($_POST['submit']))
@@ -119,7 +171,11 @@
         //1. Get all the values from our form
         $id = $_POST['id'];
         $title = $_POST['title'];
+        $description = $_POST['description'];
+        $price = $_POST['price'];     
         $current_image = $_POST['current_image'];
+        $catering = $_POST['catering'];
+
         $featured = $_POST['featured'];
         $active = $_POST['active'];
 
@@ -183,27 +239,30 @@
                 }
                 
             } else {
-                $image_name = $current_image;
+                $image_name = $current_image; // Default image when image is not selected
             }
         } else {
-            $image_name = $current_image;
+            $image_name = $current_image; // Default image when image button is not clicked
         }
 
         //3. Update the database
-        $sql2 = "UPDATE tbl_catering SET
+        $sql3 = "UPDATE tbl_catering SET
         title = '$title',
+        description = '$description',
+        price = $price,
         image_name = '$image_name',
+        catering_id = '$catering',
         featured = '$featured',
         active = '$active'
         WHERE id=$id                
         ";
 
         // Execute the query 
-        $res2 = mysqli_query($conn, $sql2);
+        $res3 = mysqli_query($conn, $sql3);
 
         //4.Redirect to manage cateringy with message
         //check whether executed or not
-        if($res2==true)
+        if($res3==true)
         {
             //catering updated 
             $_SESSION['update'] = "<div class='success'>Catering Updated Successfully.</div>";

@@ -5,6 +5,11 @@
         <h1>MANAGE CATERING</h1>
          <br /><br /><br />
 
+          <!---- button to add admin--> 
+          <a href="<?php echo SITEURL; ?>admin/add-catering.php" class="btn-primary"> Add Catering </a>
+
+         <br /><br /><br />
+
          <?php
 
                        if(isset($_SESSION['add']))
@@ -52,15 +57,11 @@
                ?>
             <br><br>
 
-                <!---- button to add admin--> 
-                <a href="<?php echo SITEURL; ?>admin/add-catering.php" class="btn-primary"> Add Catering </a>
-
-                <br /><br /><br />
-         
                 <table class="tbl-full">
                         <tr>
                           <th>S.No</th>
                           <th>Title</th>
+                          <th>Price</th>
                           <th>Image</th>
                           <th>Featured</th>
                           <th>Active</th>
@@ -90,16 +91,17 @@
                           {
                             $id = $row['id'];
                             $title = $row['title'];
+                            $price = $row['price'];
                             $image_name = $row['image_name'];
                             $featured = $row['featured'];
                             $active = $row['active'];
-
-
                             ?>
 
                             <tr>
                               <td><?php echo $sn++; ?>.</td>
-                              <td><?php echo $title; ?>.</td>
+                              <td><?php echo $title; ?></td>
+                              
+                              <td><?php echo $price; ?></td>
 
                               <td>
                                 <?php

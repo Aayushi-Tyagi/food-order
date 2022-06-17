@@ -198,6 +198,11 @@ fieldset{
     color: #747d8c;
 }
 
+/* CSS for catering */
+.catering{
+    background-color: #aea4a493;
+    padding: 4% 0;
+}
 
 /* CSS for Social */
 .social ul{

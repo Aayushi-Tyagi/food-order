@@ -74,6 +74,7 @@
                         </div>
                     <?php
                 }
+                
             }
             else{
                 //Food Not Available

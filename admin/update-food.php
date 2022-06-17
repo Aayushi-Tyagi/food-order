@@ -268,8 +268,6 @@
                     header('location:'.SITEURL.'admin/manage-food.php');
                 }
 
-
-                //Redirect to manage food with session message
              }
          
          ?>
@@ -278,3 +276,4 @@
 
 
 <?php include('partials/footer.php'); ?>
+
