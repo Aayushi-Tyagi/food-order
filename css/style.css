@@ -93,10 +93,11 @@ h3{
     border-radius: 50px;
 }
 fieldset{
-    border: 1px solid rgb(7, 7, 7);
+    border: 1px solid #ffff;
     margin: 5%;
     padding: 3%;
     border-radius: 5px;
+    color:#ffff;
 }
 
 .error{
@@ -151,6 +152,7 @@ fieldset{
 
 /* CSS for Categories */
 .categories{
+    background-color: #aea4a493;
     padding: 4% 0;
 }
 
@@ -158,6 +160,7 @@ fieldset{
     width: 28%;
     float: left;
     margin: 2%;
+    
 }
 
 
@@ -218,10 +221,11 @@ fieldset{
     border: none;
     border-radius: 5px;
     font-size: 1rem;
+    
 }
 .order-label{
     margin-bottom: 1%; 
-    font-weight: bold;
+    color: #ffff;
 }
 
 
