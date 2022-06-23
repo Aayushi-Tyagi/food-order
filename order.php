@@ -2,6 +2,9 @@
 
 
 <?php 
+
+define("CATERING","catering");
+define("FOOD","food");
   ///check whether food id is set or not
       if(isset($_GET["food_id"]))
       {
@@ -9,7 +12,12 @@
           $food_id = $_GET["food_id"];
 
           //Get the details of the selected food
-          $sql = "SELECT * FROM tbl_food WHERE id = $food_id";
+          //type=catering for catering
+          //type=food for food
+          if($_GET["type"] == FOOD)
+            $sql = "SELECT * FROM tbl_food WHERE id = $food_id";
+          else if($_GET["type"] == CATERING)
+            $sql = "SELECT * FROM tbl_catering WHERE id = $food_id";
           //execute the query
           $res = mysqli_query($conn, $sql);
           //count the rows
@@ -53,10 +61,20 @@
                   echo "<div class = 'error'>Image Not Available.</div>";
                 }
                 else{
-                  //Image is Available
+                  //Image is Available                
                   ?>
-                  <img src="<?php echo SITEURL; ?>images/food/<?php echo $image_name; ?>" alt="Cheese Pasta" class="img-responsive img-curve">
+                  
+                    <img src="<?php if($_GET["type"] == FOOD) 
+                                    {
+                                      echo SITEURL."images/food/$image_name";
+                                    }
+                                    else if($_GET["type"] == CATERING)
+                                    {
+                                      echo SITEURL."images/catering/$image_name";
+                                    } ?>" alt="Food Image" class="img-responsive img-curve">
+                  
                   <?php
+                  
                 }
             ?>
           
