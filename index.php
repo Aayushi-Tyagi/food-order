@@ -28,7 +28,7 @@
 
         <?php 
           //create sql query to display categories from database
-           $sql  = "SELECT * FROM tbl_category  WHERE active='Yes' AND featured='Yes' LIMIT 3";
+           $sql  = "SELECT * FROM tbl_category  WHERE active='Yes' AND featured='Yes' LIMIT 6";
            //execute the query
            $res = mysqli_query($conn, $sql);
            // count rows to check whether the category is available or not
